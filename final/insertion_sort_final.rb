@@ -11,19 +11,19 @@ class InsertionSort
     number_of_elements_to_sort = scrambled_elements.length
     
     number_of_elements_to_sort.times do
-      add_element_for_sorting
-      sort_an_element_into_array
+      insert_element_for_sorting
+      sort_element_into_array
     end
 
     return sorted_elements
   end
 
-  def add_element_for_sorting
+  def insert_element_for_sorting
     first_element = scrambled_elements.shift
     sorted_elements << first_element
   end
 
-  def sort_an_element_into_array
+  def sort_element_into_array
     last_index_to_be_sorted = sorted_elements.length - 2
     high_to_low_sorted = sorted_elements.reverse
 

@@ -10,7 +10,7 @@ class MergeSort
 
   def sort(scrambled_letters)
     split_up(scrambled_letters)
-    merge_together(completely_split_up)
+    merge(completely_split_up)
   end
 
   def split_up(array)
@@ -26,26 +26,25 @@ class MergeSort
     end
   end
 
-  def merge_together(array)
-    merge_with_neighbor(array)
+  def merge(array)
+    merge_neighboring_pairs(array)
 
     if done_merging?       
       sorted.flatten!
     else
-      sorted.select! { |e| !e.empty? }
-      merge_together(sorted)
+      merge(sorted)
     end
 
     return sorted
   end
 
-  def merge_with_neighbor(array)
-    array.each_slice(2) do |element|
+  def merge_neighboring_pairs(array)
+    array.each_slice(2) do |sub_array|
       collector = []
-      number_of_elements = element.flatten.length
+      number_of_elements = sub_array.flatten.length
 
       number_of_elements.times do
-        sort_lowest_element(element, collector)
+        sort_lowest_element(sub_array, collector)
       end
 
       sorted << collector
